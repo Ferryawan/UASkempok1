@@ -4,7 +4,7 @@
  */
 package uaskelompok1;
 
-import kelompok1.tebakangka;
+import uaskelompok1.tebakangka;
 
 /**
  *
