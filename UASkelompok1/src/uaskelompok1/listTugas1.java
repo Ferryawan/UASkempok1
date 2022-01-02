@@ -62,15 +62,13 @@ public class listTugas1 extends javax.swing.JFrame {
         editbutton = new javax.swing.JButton();
         hapusbutton = new javax.swing.JButton();
         simpanbutton = new javax.swing.JButton();
-        keluarbutton = new javax.swing.JButton();
+        kembalibutton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         output = new javax.swing.JTextArea();
 
         inputdialog.setTitle("Masukkan Tugasmu Disini!");
         inputdialog.setBackground(new java.awt.Color(51, 51, 255));
-        inputdialog.setMaximumSize(new java.awt.Dimension(1000, 1000));
         inputdialog.setMinimumSize(new java.awt.Dimension(450, 600));
-        inputdialog.setPreferredSize(new java.awt.Dimension(450, 600));
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
         jPanel2.setMaximumSize(new java.awt.Dimension(1000, 1000));
@@ -274,17 +272,22 @@ public class listTugas1 extends javax.swing.JFrame {
             }
         });
 
-        simpanbutton.setText("Simpan");
+        simpanbutton.setText("Lihat");
+        simpanbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                simpanbuttonMouseClicked(evt);
+            }
+        });
         simpanbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 simpanbuttonActionPerformed(evt);
             }
         });
 
-        keluarbutton.setText("Keluar");
-        keluarbutton.addActionListener(new java.awt.event.ActionListener() {
+        kembalibutton.setText("Kembali");
+        kembalibutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                keluarbuttonActionPerformed(evt);
+                kembalibuttonActionPerformed(evt);
             }
         });
 
@@ -315,7 +318,7 @@ public class listTugas1 extends javax.swing.JFrame {
                                 .addGap(33, 33, 33)
                                 .addComponent(simpanbutton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(keluarbutton)
+                                .addComponent(kembalibutton)
                                 .addGap(12, 12, 12)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -336,7 +339,7 @@ public class listTugas1 extends javax.swing.JFrame {
                     .addComponent(editbutton)
                     .addComponent(hapusbutton)
                     .addComponent(simpanbutton)
-                    .addComponent(keluarbutton))
+                    .addComponent(kembalibutton))
                 .addContainerGap())
         );
 
@@ -406,10 +409,10 @@ public class listTugas1 extends javax.swing.JFrame {
             model.removeRow(tabel.getSelectedRow());
     }//GEN-LAST:event_hapusbuttonActionPerformed
 
-    private void keluarbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_keluarbuttonActionPerformed
+    private void kembalibuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembalibuttonActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_keluarbuttonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_kembalibuttonActionPerformed
 
     private void editbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editbuttonMouseClicked
         // TODO add your handling code here:
@@ -427,7 +430,7 @@ public class listTugas1 extends javax.swing.JFrame {
     }//GEN-LAST:event_tabelMouseClicked
 
     private void simpanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbuttonActionPerformed
-        // TODO add your handling code here:        
+        // TODO add your handling code here:
         output.setText(judultf.getText()
                 + "\nUpdated = " + updatetf.getText()
                 + "\nMata Kuliah = " + matkultf.getText()
@@ -436,6 +439,10 @@ public class listTugas1 extends javax.swing.JFrame {
                 + "\nURL = " + urltf.getText()
         );
     }//GEN-LAST:event_simpanbuttonActionPerformed
+
+    private void simpanbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_simpanbuttonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_simpanbuttonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -501,7 +508,7 @@ public class listTugas1 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel judul_;
     private javax.swing.JTextField judultf;
-    private javax.swing.JButton keluarbutton;
+    private javax.swing.JButton kembalibutton;
     private javax.swing.JTextField matkultf;
     private javax.swing.JButton newbutton;
     private javax.swing.JLabel nomor_;
@@ -514,6 +521,10 @@ public class listTugas1 extends javax.swing.JFrame {
     private javax.swing.JLabel url_;
     private javax.swing.JTextField urltf;
     // End of variables declaration//GEN-END:variables
+
+    private void simpan() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 
     
