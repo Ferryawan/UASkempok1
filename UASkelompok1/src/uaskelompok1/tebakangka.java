@@ -14,7 +14,7 @@ public class tebakangka extends javax.swing.JFrame {
     int bilRandom = rd.nextInt(101);
 
     /**
-     * Creates new form kelompok1
+     * Creates new form uaskelompok1
      */
     public tebakangka() {
         initComponents();
@@ -43,6 +43,7 @@ public class tebakangka extends javax.swing.JFrame {
         reset = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,6 +116,14 @@ public class tebakangka extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uaskelompok1/icons8_user_account_30px.png"))); // NOI18N
 
+        jButton2.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 12)); // NOI18N
+        jButton2.setText("KEMBALI");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -136,7 +145,9 @@ public class tebakangka extends javax.swing.JFrame {
                     .addComponent(reset, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
@@ -174,9 +185,10 @@ public class tebakangka extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(txtSkor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(74, 74, 74)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jButton3))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -207,14 +219,18 @@ public class tebakangka extends javax.swing.JFrame {
         if (txtTebakan.getText().contains(tebakan)){
             skor = skor * 100 ;
             txtHint.setText("Benar Sekali !!");
-            JOptionPane.showMessageDialog(null, "Benar Sekali !!");
+            JOptionPane.showMessageDialog(null, "Benar Sekali !!\nSkor Anda = " + skor);
             bilRandom = rd.nextInt(101);
+            txtTebakan.setText("");
+            txtHint.setText(null);
+            txtSkor.setText("15");
+            txtTebakan.requestFocus();
         }
         else {
-            if (skor > 2 ) {
-                skor = skor - 2 ;
+            if (skor > 0 ) {
+                skor = skor - 5 ;
                 JOptionPane.showMessageDialog(null, "Coba Lagi !!");
-                
+                txtTebakan.requestFocus();
                 int x = Integer.parseInt(txtTebakan.getText());
                 if ( x > bilRandom) {
                     txtHint.setText("Terlalu Besar");
@@ -223,22 +239,27 @@ public class tebakangka extends javax.swing.JFrame {
                     txtHint.setText("Terlalu Kecil");
                 } 
             }
-            else if (skor == 2) {
+            else if (skor == 0) {
                 skor = 0 ;
                 JOptionPane.showMessageDialog(null, "Game Over \n Tetap Semangat Dan Jangan Mengerah");
+                bilRandom = rd.nextInt(101);
+                txtTebakan.setText("");
+                txtHint.setText(null);
+                txtSkor.setText("15");
+                txtTebakan.requestFocus();
             }
+            txtSkor.setText(String.valueOf(skor));
         }
-        txtSkor.setText(String.valueOf(skor));
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtTebakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTebakanActionPerformed
         // TODO add your handling code here:
+        txtTebakan.requestFocus();
     }//GEN-LAST:event_txtTebakanActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        masukfoto mf = new masukfoto();
+        masukfoto1 mf = new masukfoto1();
         mf.setVisible(true);
         mf.pack();
         mf.setLocationRelativeTo(null);
@@ -253,10 +274,19 @@ public class tebakangka extends javax.swing.JFrame {
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
         // TODO add your handling code here:
         bilRandom = rd.nextInt(101);
-        txtTebakan.setText("0");
+        txtTebakan.setText("");
         txtHint.setText(null);
-        txtSkor.setText("20");
+        txtSkor.setText("15");
+        txtTebakan.requestFocus();
     }//GEN-LAST:event_resetActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        TampilanAwal ta = new TampilanAwal();
+        ta.setLocationRelativeTo(null);
+        ta.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,6 +332,7 @@ public class tebakangka extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

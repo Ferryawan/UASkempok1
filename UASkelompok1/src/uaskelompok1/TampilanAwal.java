@@ -9,12 +9,15 @@ package uaskelompok1;
  * @author user
  */
 public class TampilanAwal extends javax.swing.JFrame {
-
     /**
      * Creates new form TampilanAwal
      */
     public TampilanAwal() {
         initComponents();
+    }
+
+    TampilanAwal(String tampilan) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -31,7 +34,7 @@ public class TampilanAwal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Label4 = new javax.swing.JLabel();
         tombollist = new javax.swing.JButton();
         tomboltebak = new javax.swing.JButton();
         keluar1 = new javax.swing.JButton();
@@ -46,7 +49,7 @@ public class TampilanAwal extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uaskelompok1/icons8_pass_fail_100px.png"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uaskelompok1/icons8_alarm_clock_50px.png"))); // NOI18N
+        Label4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uaskelompok1/icons8_alarm_clock_50px.png"))); // NOI18N
 
         tombollist.setBackground(new java.awt.Color(255, 255, 255));
         tombollist.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 14)); // NOI18N
@@ -57,6 +60,7 @@ public class TampilanAwal extends javax.swing.JFrame {
             }
         });
 
+        tomboltebak.setBackground(new java.awt.Color(255, 255, 255));
         tomboltebak.setFont(new java.awt.Font("Rockwell Extra Bold", 0, 14)); // NOI18N
         tomboltebak.setText("TEBAK ANGKA");
         tomboltebak.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +95,7 @@ public class TampilanAwal extends javax.swing.JFrame {
                                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(40, 40, 40)
-                                .addComponent(jLabel4)))
+                                .addComponent(Label4)))
                         .addContainerGap(53, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -119,7 +123,7 @@ public class TampilanAwal extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(92, 92, 92))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addComponent(Label4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel5)
                                 .addGap(68, 68, 68)))
@@ -207,9 +211,9 @@ public class TampilanAwal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Label4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;

@@ -7,17 +7,20 @@ package uaskelompok1;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
+/** 
  *
  * @author user
  */
+
 public class listTugas1 extends javax.swing.JFrame {
 
     /**
      * Creates new form listTugas
      */
+    
     DefaultTableModel model;
     
     public listTugas1() {
@@ -26,6 +29,7 @@ public class listTugas1 extends javax.swing.JFrame {
         model = (DefaultTableModel) tabel.getModel();
     }
 
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,13 +51,13 @@ public class listTugas1 extends javax.swing.JFrame {
         url_ = new javax.swing.JLabel();
         nomortf = new javax.swing.JTextField();
         judultf = new javax.swing.JTextField();
-        updatetf = new javax.swing.JTextField();
         urltf = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         deskripsitf = new javax.swing.JTextArea();
         jDate = new com.toedter.calendar.JDateChooser();
         matkultf = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        dateupdate = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabel = new javax.swing.JTable();
@@ -68,20 +72,24 @@ public class listTugas1 extends javax.swing.JFrame {
 
         inputdialog.setTitle("Masukkan Tugasmu Disini!");
         inputdialog.setBackground(new java.awt.Color(51, 51, 255));
+        inputdialog.setMaximumSize(new java.awt.Dimension(1000, 1000));
         inputdialog.setMinimumSize(new java.awt.Dimension(450, 600));
+        inputdialog.setPreferredSize(new java.awt.Dimension(450, 600));
 
         jPanel2.setBackground(new java.awt.Color(153, 153, 255));
         jPanel2.setMaximumSize(new java.awt.Dimension(1000, 1000));
         jPanel2.setMinimumSize(new java.awt.Dimension(450, 600));
         jPanel2.setPreferredSize(new java.awt.Dimension(450, 600));
 
-        buttonkeluar.setText("Keluar");
+        buttonkeluar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        buttonkeluar.setText("KEMBALI");
         buttonkeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonkeluarActionPerformed(evt);
             }
         });
 
+        buttonok.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         buttonok.setText("OK");
         buttonok.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,17 +97,29 @@ public class listTugas1 extends javax.swing.JFrame {
             }
         });
 
+        nomor_.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         nomor_.setText("Nomor");
 
+        judul_.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         judul_.setText("Judul");
 
+        update_.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         update_.setText("Tanggal Update");
 
+        jLabel5.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         jLabel5.setText("Deskripsi");
 
+        deadline_.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         deadline_.setText("Deadline");
 
+        url_.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         url_.setText("URL");
+
+        nomortf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomortfActionPerformed(evt);
+            }
+        });
 
         deskripsitf.setColumns(20);
         deskripsitf.setRows(5);
@@ -111,50 +131,56 @@ public class listTugas1 extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Stencil", 0, 12)); // NOI18N
         jLabel2.setText("Mata Kuliah");
+
+        dateupdate.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                dateupdatePropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(buttonok)
-                        .addGap(36, 36, 36)
-                        .addComponent(buttonkeluar))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 78, Short.MAX_VALUE)
+                .addComponent(buttonok)
+                .addGap(36, 36, 36)
+                .addComponent(buttonkeluar)
+                .addGap(204, 204, 204))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(update_)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(update_)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(judul_, javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(nomor_, javax.swing.GroupLayout.Alignment.LEADING))
-                                            .addGap(9, 9, 9))
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(url_)
-                                            .addComponent(deadline_)))
-                                    .addGap(36, 36, 36)))
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel2))
-                        .addGap(51, 51, 51)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(nomortf, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(judultf, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(updatetf, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(matkultf, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(urltf, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                                        .addComponent(judul_, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(nomor_, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addGap(9, 9, 9))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(url_)
+                                    .addComponent(deadline_)))
+                            .addGap(36, 36, 36)))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel2))
+                .addGap(51, 51, 51)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(urltf, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(dateupdate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(nomortf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                        .addComponent(judultf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                        .addComponent(matkultf, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jDate, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -167,11 +193,11 @@ public class listTugas1 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(judultf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(judul_))
-                .addGap(25, 25, 25)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(updatetf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(update_))
-                .addGap(25, 25, 25)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(update_)
+                    .addComponent(dateupdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(matkultf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -191,7 +217,7 @@ public class listTugas1 extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonok)
                     .addComponent(buttonkeluar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout inputdialogLayout = new javax.swing.GroupLayout(inputdialog.getContentPane());
@@ -243,9 +269,10 @@ public class listTugas1 extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tabel);
 
-        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Viner Hand ITC", 1, 24)); // NOI18N
         jLabel1.setText("TO DO LIST");
 
+        newbutton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         newbutton.setText("+");
         newbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,6 +280,7 @@ public class listTugas1 extends javax.swing.JFrame {
             }
         });
 
+        editbutton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         editbutton.setText("Edit");
         editbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -265,6 +293,7 @@ public class listTugas1 extends javax.swing.JFrame {
             }
         });
 
+        hapusbutton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         hapusbutton.setText("Hapus");
         hapusbutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -272,6 +301,7 @@ public class listTugas1 extends javax.swing.JFrame {
             }
         });
 
+        simpanbutton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         simpanbutton.setText("Lihat");
         simpanbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -284,6 +314,7 @@ public class listTugas1 extends javax.swing.JFrame {
             }
         });
 
+        kembalibutton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         kembalibutton.setText("Kembali");
         kembalibutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,40 +331,39 @@ public class listTugas1 extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(20, 20, 20)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(newbutton)
-                                .addGap(37, 37, 37)
-                                .addComponent(editbutton)
-                                .addGap(36, 36, 36)
-                                .addComponent(hapusbutton)
-                                .addGap(33, 33, 33)
-                                .addComponent(simpanbutton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(kembalibutton)
-                                .addGap(12, 12, 12)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(15, 15, 15)
+                        .addComponent(newbutton)
+                        .addGap(37, 37, 37)
+                        .addComponent(editbutton)
+                        .addGap(36, 36, 36)
+                        .addComponent(hapusbutton)
+                        .addGap(33, 33, 33)
+                        .addComponent(simpanbutton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(kembalibutton)
+                        .addGap(12, 12, 12)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(369, 369, 369)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newbutton)
                     .addComponent(editbutton)
@@ -359,13 +389,21 @@ public class listTugas1 extends javax.swing.JFrame {
 
     private void jDatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDatePropertyChange
         // TODO add your handling code here:
-        tanggal();
+        date();
     }//GEN-LAST:event_jDatePropertyChange
 
+    String update;
+    public void date(){
+        if(dateupdate.getDate() != null){
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat format = new SimpleDateFormat(pattern);
+        update = String.valueOf(format.format(dateupdate.getDate()));
+        }
+    }
     
     private void buttonokActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonokActionPerformed
         // TODO add your handling code here:
-        model.addRow(new Object[]{nomortf.getText(), judultf.getText(), updatetf.getText(), matkultf.getText(), deskripsitf.getText(), jDate.getDate() , urltf.getText(), false});
+        model.addRow(new Object[]{nomortf.getText(), judultf.getText(), dateupdate.getDate(), matkultf.getText(), deskripsitf.getText(), jDate.getDate(), urltf.getText(), false});
         inputdialog.dispose();
     }//GEN-LAST:event_buttonokActionPerformed
 
@@ -379,7 +417,7 @@ public class listTugas1 extends javax.swing.JFrame {
         inputdialog.setVisible(true);
         nomortf.setText("");
         judultf.setText("");
-        updatetf.setText("");
+        dateupdate.setDate(null);
         matkultf.setText("");
         deskripsitf.setText("");
         jDate.setDate(null);
@@ -397,7 +435,6 @@ public class listTugas1 extends javax.swing.JFrame {
     inputdialog.setVisible(true);
     nomortf.setText(model.getValueAt(tabel.getSelectedRow(),0).toString());
     judultf.setText(model.getValueAt(tabel.getSelectedRow(),1).toString());
-    updatetf.setText(model.getValueAt(tabel.getSelectedRow(),2).toString());
     matkultf.setText(model.getValueAt(tabel.getSelectedRow(),3).toString());
     deskripsitf.setText(model.getValueAt(tabel.getSelectedRow(),4).toString());
         
@@ -405,13 +442,19 @@ public class listTugas1 extends javax.swing.JFrame {
             
     private void hapusbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusbuttonActionPerformed
         // TODO add your handling code here:
-        if(tabel.getSelectedRow() != -1)
+        int input = JOptionPane.showConfirmDialog(null, "apakah anda yakin ingin menghapus?", "konfirmasi", JOptionPane.YES_NO_OPTION);
+        
+        if(input == 0) {
             model.removeRow(tabel.getSelectedRow());
+        } 
     }//GEN-LAST:event_hapusbuttonActionPerformed
 
     private void kembalibuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembalibuttonActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        TampilanAwal ta = new TampilanAwal();
+        ta.setLocationRelativeTo(null);
+        ta.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_kembalibuttonActionPerformed
 
     private void editbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editbuttonMouseClicked
@@ -432,7 +475,7 @@ public class listTugas1 extends javax.swing.JFrame {
     private void simpanbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanbuttonActionPerformed
         // TODO add your handling code here:
         output.setText(judultf.getText()
-                + "\nUpdated = " + updatetf.getText()
+                + "\nUpdated = " + dateupdate.getDate()
                 + "\nMata Kuliah = " + matkultf.getText()
                 + "\nDeskripsi = " + deskripsitf.getText()
                 + "\nDeadline = " + jDate.getDate()
@@ -442,7 +485,17 @@ public class listTugas1 extends javax.swing.JFrame {
 
     private void simpanbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_simpanbuttonMouseClicked
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_simpanbuttonMouseClicked
+
+    private void dateupdatePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dateupdatePropertyChange
+        // TODO add your handling code here:
+        tanggal();
+    }//GEN-LAST:event_dateupdatePropertyChange
+
+    private void nomortfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomortfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomortfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -457,31 +510,7 @@ public class listTugas1 extends javax.swing.JFrame {
     }
     
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(listTugas1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(listTugas1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(listTugas1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(listTugas1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new listTugas1().setVisible(true);
@@ -492,6 +521,7 @@ public class listTugas1 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonkeluar;
     private javax.swing.JButton buttonok;
+    private com.toedter.calendar.JDateChooser dateupdate;
     private javax.swing.JLabel deadline_;
     private javax.swing.JTextArea deskripsitf;
     private javax.swing.JButton editbutton;
@@ -517,7 +547,6 @@ public class listTugas1 extends javax.swing.JFrame {
     private javax.swing.JButton simpanbutton;
     private javax.swing.JTable tabel;
     private javax.swing.JLabel update_;
-    private javax.swing.JTextField updatetf;
     private javax.swing.JLabel url_;
     private javax.swing.JTextField urltf;
     // End of variables declaration//GEN-END:variables
